@@ -11,21 +11,18 @@ public class Konzol {
 
     private Gyujtemeny gyujtemeny;
 
-    // Constructor to initialize the collection (Gyujtemeny) and load test data
     public Konzol() {
         gyujtemeny = new Gyujtemeny();
         testData();
     }
 
     public void konzolraIr() {
-        // First paragraph in the console
         System.out.println("\n--- Üdvözöljük a Műalkotás Gyűjteményben! ---");
         System.out.println("Jelenleg elérhető műalkotások:");
         System.out.println(gyujtemeny.getGyujtemenyek());
     }
 
     public void FajlbaIr() {
-        // Write to binary file with exception handling
         try {
             gyujtemeny.saveToFile(new File("artworks.bin"));
             System.out.println("Műalkotások mentve a fájlba: artworks.bin");
@@ -35,14 +32,12 @@ public class Konzol {
     }
 
     public void statisztika() {
-        // Display statistics about preparation methods
         Map<String, Long> stat = gyujtemeny.preparationStatistics();
         System.out.println("Statisztika (elkészítési mód szerint):");
         stat.forEach((k, v) -> System.out.println(k + " → " + v));
     }
 
     private void testData() {
-        // Load test data into the collection
         gyujtemeny.addArtwork(new Szobrok("001", "Michelangelo", "Dávid", Category.EREDETI, 21, "márvány"));
         gyujtemeny.addArtwork(new Szobrok("002", "Rodin", "A gondolkodó", Category.EREDETI, 19, "bronz"));
         gyujtemeny.addArtwork(new Festmenyek("003", "Monet", "Tavirózsák", Category.EREDETI, 19, "Impresszionista", "festek"));
